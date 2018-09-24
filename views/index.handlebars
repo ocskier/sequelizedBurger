@@ -1,0 +1,84 @@
+<h1 class="jumbotron center" style="margin-top: 0;padding:2rem 1rem">Burgers!</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+        <div class="card-image">
+          <img src="assets/rawpixel-760107-unsplash.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Burgers that can be eaten!</span>
+          <ul>
+            {{#each burgers}}
+              {{#unless isEaten}}
+                {{> burgers/burger-block eaten=true}}
+              {{/unless}}
+            {{/each}}
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="col s6">
+    <div class="card">
+        <div class="card-image">
+          <img src="assets/benjamin-wong-484507-unsplash.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Burgers already eaten!</span>
+          <ul>
+            {{#each burgers}}
+              {{#if isEaten}}
+                {{> burgers/burger-block eaten=false}}
+              {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <!-- Button trigger modal -->
+  <button type="button" class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="background-color:purple">
+    Add a Burger
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content"  style="padding:0">
+        <form id="create-form">
+          <div class="modal-header">
+            <div class="form-group" style="width:100%">
+              <label for="bu">Burger Name:</label>
+              <input class="form-control" type="text" id="bu" placeholder="Hamburger" style="padding: 5px;border: 1px solid black">
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label>Eat Me?</label><br>
+            <form action="#">
+            <p>
+              <label for="case1">
+                <input id="case1" name="group1" type="radio" value="1" checked />
+                <span>Eaten!</span>
+              </label>
+            </p>
+            <p>
+              <label for="case2">
+                <input id="case2" name="group1" type="radio" value="0" />
+                <span>Not Eaten!</span>
+              </label>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" style="background-color:purple">Add Burger</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
