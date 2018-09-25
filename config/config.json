@@ -15,10 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "uyp150ykdx7kkgmt",
-    "password": "u2hh316blcy6r3e4",
-    "database": "x44hwvczk3hlnp3b",
-    "host": "mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306",
+    "username": "wzej7f3gl7lsjquu",
+    "password": "narrmw289d2l9q1e",
+    "database": "mu4qnnbsoirlpssr",
+    "host": "tuy8t6uuvh43khkk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "port": 3306,
     "dialect": "mysql"
   }
 }
