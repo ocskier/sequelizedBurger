@@ -7,6 +7,8 @@ $(function() {
   $(".change-eaten").on("click", function(event) {
     var id = $(this).data("id");
     var newEaten = $(this).data("neweaten");
+    var audio = new Audio('assets/Eating-SoundBible.com-1470347575.mp3');
+    audio.play();
 
     var newEatenState = {
       isEaten: newEaten
