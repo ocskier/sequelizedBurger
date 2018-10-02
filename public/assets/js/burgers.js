@@ -4,11 +4,16 @@ $(function() {
     $('#myInput').trigger('focus')
   });
 
-  $(".change-eaten").on("click", function(event) {
-    var id = $(this).data("id");
-    var newEaten = $(this).data("neweaten");
+  function eatBurger (callback) {
     var audio = new Audio('assets/Eating-SoundBible.com-1470347575.mp3');
     audio.play();
+    setTimeout (callback,2000);
+  }
+
+  $(".change-eaten").on("click", function(event) {
+    
+    var id = $(this).data("id");
+    var newEaten = $(this).data("neweaten");
 
     var newEatenState = {
       isEaten: newEaten
@@ -22,7 +27,9 @@ $(function() {
       function() {
         console.log("changed to Eaten", newEaten);
         // Reload the page to get the updated list
-        location.reload();
+        eatBurger(function() {
+          location.reload();
+        });
       }
     );
   });
