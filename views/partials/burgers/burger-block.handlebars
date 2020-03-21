@@ -1,7 +1,6 @@
-<li>
+<li style="display:flex; justify-content:space-between">
 	{{burger_name}} Burger
 		{{#if eaten}}<button class="change-eaten" data-id="{{id}}" data-neweaten="{{eaten}}">Eat Me!</button>
 			{{else}}<button class="delete-burger" data-id="{{this.id}}">Remove!</button>
 		{{/if}}
-	</button>
 </li>
