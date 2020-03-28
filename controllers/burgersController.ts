@@ -1,11 +1,13 @@
+import { Application } from "express";
+import { BurgerType } from "../models/burger";
 
 // Import the model (burger.js) to use its database functions.
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function(app: Application) {
   // Create all our routes and set up logic within those routes where required.
   app.get("/", function(req, res) {
-    db.Burger.findAll({raw: true}).then((value) => {
+    db.Burger.findAll({raw: true}).then((value: BurgerType[]) => {
       var hbsObject = {burgers: value};
       console.log(hbsObject);
       res.render("index", hbsObject);
@@ -17,8 +19,8 @@ module.exports = function(app) {
     db.Burger.create({
       burger_name: req.body.burger_name,
       isEaten:req.body.isEaten
-    }).then((value) => {
-      res.json({ id: value.insertId });
+    }).then(({insertId}:{insertId: string}) => {
+      res.json({ id: insertId });
     });
   });
 
@@ -26,8 +28,8 @@ module.exports = function(app) {
 
     db.Burger.update({
       isEaten: req.body.isEaten
-    }, {where:{id: req.params.id}}).then((value) => {
-      if (value.changedRows == 0) {
+    }, {where:{id: req.params.id}}).then(({changedRows}: {changedRows:number}) => {
+      if (changedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404
         return res.status(404).end();
       } else {
@@ -38,8 +40,8 @@ module.exports = function(app) {
 
   app.delete("/api/burgers/:id", function(req, res) {
 
-    db.Burger.destroy({where: {id: req.params.id}}).then((value) => {
-      if (value.affectedRows == 0) {
+    db.Burger.destroy({where: {id: req.params.id}}).then(({affectedRows}: {affectedRows:number}) => {
+      if (affectedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404
         return res.status(404).end();
       } else {
