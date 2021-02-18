@@ -5,8 +5,8 @@ module.exports = function (sequelize, DataTypes) {
         burger_name: DataTypes.STRING,
         isEaten: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false
-        }
+            defaultValue: false,
+        },
     });
     return Burger;
 };

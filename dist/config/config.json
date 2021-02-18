@@ -1,17 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "burgers_db",
-    "host": "localhost",
-    "port": 3306,
+    "use_env_variable": "LOCAL_HOST",
     "dialect": "mysql"
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "test": {
+    "use_env_variable": "TEST_URL",
     "dialect": "mysql"
   },
   "production": {
