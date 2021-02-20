@@ -7,9 +7,10 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "lib": ["es2015"]
+    "lib": ["es2015"],
+    "resolveJsonModule": true
   },
   "files": ["./node_modules/@types/node/index.d.ts"],
-  "include": ["*.ts", "db/*.ts", "controllers/*.ts", "models/*.ts","seeders/*.ts"],
+  "include": ["*.ts", "db/*.ts", "controllers/*.ts", "models/*.ts","seeders/*.ts","config/config.json"],
   "exclude": ["node_modules"]
 }
