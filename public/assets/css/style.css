@@ -1,11 +1,38 @@
+body {}
+
 li {
   padding: 5px;
   margin: 5px;
   background: #faebd7;
 }
 
-.label {
+h1 {
+  order: 0;
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  min-height: 100%;
+}
+
+.card-content {
+  min-height: 15rem;
+}
+
+.card-title {
+  font-weight: bolder !important;
+}
+
+label {
   font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .create-update-form {
@@ -16,4 +43,59 @@ li {
 
 .form-group {
   margin-bottom: 5px;
+}
+
+.row:nth-child(1) {
+  order: 1;
+}
+
+.row:nth-child(2) {
+  order: 2;
+}
+
+.newBtn {
+  margin: 0 auto;
+}
+
+button.modal-close {
+    top: 1rem;
+    right: 1rem;
+    position: absolute;
+    font-size: 1.4rem;
+}
+
+.modal-content {
+    margin: 1rem 3.6rem;
+}
+
+div#new-burger-modal {
+    top: 25%;
+}
+
+.input-field {
+    padding: 1rem 0rem;
+}
+
+label.active {
+    font-size: 1.4rem;
+}
+
+label > span {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 602px) {
+  .row:nth-child(1) {
+    order: 2;
+  }
+
+  .row:nth-child(2) {
+    order: 1;
+  }
+}
+
+@media (max-width: 756px) {
+  .card-title {
+    font-size: 1.2rem !important;
+  }
 }
