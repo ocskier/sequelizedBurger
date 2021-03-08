@@ -109,36 +109,39 @@ router.put('api/burgers/update', async (req: Request, res: Response) => {
 
       res.json('/');
     } catch (err) {
-      return res.status(500).json(err);
+      res.status(500).json(err);
     }
   }
   // If we aren't given a customer, just update the burger to be devoured
   else {
-    db.Burger.update(
-      {
-        devoured: true,
-      },
-      {
-        where: {
-          id: req.body.burger_id,
+    try {
+      const dbBurger: BurgerType = await db.Burger.update(
+        {
+          devoured: true,
         },
-      }
-    )
-      .then(function (dbBurger: BurgerType) {
-        res.json('/');
-      })
-      .catch((err: Error) => {
-        return res.status(500).json(err);
-      });
+        {
+          where: {
+            id: req.body.burger_id,
+          },
+        }
+      );
+      res.json('/');
+    } catch (err) {
+        res.status(500).json(err);
+    };
   }
 });
 
 router.delete('/api/burgers/:id', async (req: Request, res: Response) => {
-  const { affectedRows }: { affectedRows: number } = db.Burger.destroy({ where: { id: req.params.id } });
-  if (affectedRows == 0) {
-    return res.status(404).end();
-  } else {
-    res.status(200).end();
+  try {
+    const { affectedRows }: { affectedRows: number } = await db.Burger.destroy({ where: { id: req.params.id } });
+    if (affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  } catch(err) {
+    res.status(500).json(err);
   }
 });
 
