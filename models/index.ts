@@ -26,6 +26,7 @@ fs
   });
 
 db.Customer.hasMany(db.Burger);
+db.Burger.belongsTo(db.Customer);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

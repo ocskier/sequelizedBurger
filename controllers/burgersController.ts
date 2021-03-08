@@ -22,10 +22,9 @@ router.get('/burgers', async (req: Request, res: Response) => {
         },
       ],
       order: [['burger_name', 'ASC']],
-    }).map((el: Model) => el.get({ plain: true })); 
-
+    });
     const hbsObject = {
-      burgers: dbBurgers,
+      burgers: dbBurgers.map((el: Model) => el.get({ plain: true })),
     };
     return res.render('index', hbsObject);
   } catch (err) {
@@ -43,10 +42,9 @@ router.get('/customers', async (req: Request, res: Response) => {
         },
       ],
       order: [['customer', 'ASC']],
-    }).map((el: Model) => el.get({ plain: true }));
-    console.log(dbCustomers);
+    });
     const hbsObject = {
-      customers: dbCustomers,
+      customers: dbCustomers.map((el: Model) => el.get({ plain: true })),
     };
     return res.render('customer', hbsObject);
   } catch (err) {
@@ -54,7 +52,7 @@ router.get('/customers', async (req: Request, res: Response) => {
   }
 });
 
-router.post('api/burgers/create', async (req: Request, res: Response) => {
+router.post('/api/burgers/create', async (req: Request, res: Response) => {
   const newBurger = new db.Burger({
     burger_name: req.body.burger_name,
   });
@@ -67,7 +65,7 @@ router.post('api/burgers/create', async (req: Request, res: Response) => {
   }
 });
 
-router.put('api/burgers/update', async (req: Request, res: Response) => {
+router.put('/api/burgers/update', async (req: Request, res: Response) => {
   // If we are given a customer, create the customer and give them this devoured burger
   console.log(req.body);
   if (req.body.customer) {
@@ -81,7 +79,6 @@ router.put('api/burgers/update', async (req: Request, res: Response) => {
         },
         raw: true,
       });
-      console.log(result);
       const [dbCustomer, created] = result;
 
       if (!created) {

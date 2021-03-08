@@ -11,7 +11,7 @@
           <span class="card-title center">Burgers that can be eaten!</span>
           <ul>
             {{#each burgers}}
-            {{#unless devoured}}
+            {{#unless isEaten}}
             <li>
               <div class="col-sm-12 text-center">
                 <p>{{burger_name}} Burger</p>
@@ -39,7 +39,7 @@
           <hr>
           <ul>
             {{#each burgers}}
-            {{#if devoured}}
+            {{#if isEaten}}
             <li>
               <div>
                 <input class="form-control eaten-burger-name" type="text" placeholder="{{burger_name}} Burger" readonly>
