@@ -1,6 +1,12 @@
 $(function() {
   var currentBurger;
 
+  function eatBurger(callback) {
+    var audio = new Audio('/assets/Eating-SoundBible.com-1470347575.mp3');
+    audio.play();
+    setTimeout(callback, 2000);
+  }
+
   $('[data-target="devour-burger-modal"]').on('click', function () {
     currentBurger = $(this).siblings('input').val();
     console.log(currentBurger);
@@ -41,7 +47,9 @@ $(function() {
       data: burgerInfo,
     }).then(function (data) {
       // reload page to display devoured burger in proper column
-      location.reload();
+      eatBurger(function () {
+        location.reload();
+      });
     });
   });
 
