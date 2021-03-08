@@ -1,4 +1,12 @@
-module.exports = function (sequelize, DataTypes) {
+import { Sequelize, Model, ModelCtor } from 'sequelize';
+
+export interface CustomerType {
+  id: string;
+  customer: string;
+  numBurgersEaten: Number;
+}
+
+module.exports = function (sequelize: Sequelize, DataTypes: any) {
   var Customer = sequelize.define('Customer', {
     customer: {
       type: DataTypes.STRING,
@@ -9,8 +17,5 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: 0,
     },
   });
-  Customer.associate = function (models) {
-    Customer.hasMany(models.Burger);
-  };
   return Customer;
 };

@@ -25,11 +25,7 @@ fs
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName: string) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+db.Customer.hasMany(db.Burger);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
