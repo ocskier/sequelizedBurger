@@ -1,8 +1,9 @@
 $(function() {
   var currentBurger;
-
+  var audio = new Audio(
+    '/assets/audio/Eating-SoundBible.com-1470347575.mp3'
+  );
   function eatBurger(callback) {
-    var audio = new Audio('/assets/Eating-SoundBible.com-1470347575.mp3');
     audio.play();
     setTimeout(callback, 2000);
   }

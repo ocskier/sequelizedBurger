@@ -1,5 +1,6 @@
 // Burger controller
 const express = require('express');
+const path = require('path');
 const Sequelize = require('sequelize');
 const router = express.Router();
 import { Request, Response } from 'express';
