@@ -148,16 +148,13 @@ router.put('api/burgers/update', async (req: Request, res: Response) => {
 });
 
 router.delete('/api/burgers/:id', async (req: Request, res: Response) => {
-  db.Burger.destroy({ where: { id: req.params.id } }).then(
-    ({ affectedRows }: { affectedRows: number }) => {
-      if (affectedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      } else {
-        res.status(200).end();
-      }
-    }
-  );
+  const { affectedRows }: { affectedRows: number } = db.Burger.destroy({ where: { id: req.params.id } });
+  if (affectedRows == 0) {
+    // If no rows were changed, then the ID must not exist, so 404
+    return res.status(404).end();
+  } else {
+    res.status(200).end();
+  }
 });
 
 module.exports = router;
