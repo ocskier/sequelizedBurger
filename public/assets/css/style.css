@@ -30,9 +30,9 @@ a[href="/customers"], a[href="/burgers"] {
 }
 
 .card {
-  min-height: 100%;
-  max-width: 34em;
-  min-width: 22em;
+  min-height: 34em;
+  min-width: 18em;
+  width: 100%;
 }
 
 .card-content {
@@ -56,6 +56,14 @@ a[href="/customers"], a[href="/burgers"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+input.form-control.eaten-burger-name {
+    margin: 0;
+}
+
+.li-div {
+    height: 3em;
 }
 
 label {
@@ -113,8 +121,8 @@ label > span {
 }
 
 .eaten-text {
-  margin: 0 0 8px 0 !important;
   flex-grow: 1;
+  text-align: right;
 }
 
 .eaten-burger-name {
