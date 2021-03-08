@@ -1,29 +1,29 @@
 $(function() {
   var currentBurger;
 
-  $('#myModal').on('shown.bs.modal', function () {
+  $('[data-target="devour-burger-modal"]').on('click', function () {
     currentBurger = $(this).siblings('input').val();
-    $('#myInput').trigger('focus');
+    console.log(currentBurger);
   });
 
-  $('.create-btn').on('click', function (event) {
+  $('#create-form').on('submit', function (event) {
+    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    var nameInput = $(this).siblings('[name=burger_name]').val();
-    if (nameInput) {
-      var burgerInfo = {
-        burger_name: nameInput,
-      };
-      console.log(burgerInfo);
-      $.ajax({
-        method: 'POST',
-        url: '/api/burgers/create',
-        data: burgerInfo,
-      }).then(function (data) {
-        // reload page to display devoured burger in proper column
-        location.reload();
-      });
-    }
+    var newBurger = {
+      burger_name: $('#bu').val().trim(),
+      isEaten: $('[name=group1]:checked').val().trim(),
+    };
+
+    // Send the POST request.
+    $.ajax('/api/burgers/create', {
+      type: 'POST',
+      data: newBurger,
+    }).then(function () {
+      console.log('created new burger');
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 
   $('.devour-form').on('submit', function (event) {

@@ -10,6 +10,17 @@ h1 {
   order: 0;
 }
 
+a.btn {
+  width: 10rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+a[href="/customers"], a[href="/burgers"] {
+  background-color: purple;
+}
+
 .container {
   width: 100%;
   padding: 0;
@@ -20,14 +31,31 @@ h1 {
 
 .card {
   min-height: 100%;
+  max-width: 34em;
+  min-width: 22em;
 }
 
 .card-content {
   min-height: 15rem;
+  max-height: 260px;
+  overflow: auto;
+  margin-top: 0.8em;
 }
 
 .card-title {
   font-weight: bolder !important;
+  font-size: 1.4rem !important;
+  text-align: center;
+}
+
+.card .card-image img {
+  max-height: 14em;
+}
+
+.card-content ul li div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 label {
@@ -35,14 +63,13 @@ label {
   font-size: 1.4rem;
 }
 
-.create-update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
-}
-
 .form-group {
   margin-bottom: 5px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .row:nth-child(1) {
@@ -58,30 +85,107 @@ label {
 }
 
 button.modal-close {
-    top: 1rem;
-    right: 1rem;
-    position: absolute;
-    font-size: 1.4rem;
-}
-
-.modal-content {
-    margin: 1rem 3.6rem;
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  font-size: 1.4rem;
 }
 
 div#new-burger-modal {
-    top: 25%;
+  top: 25%;
 }
 
 .input-field {
-    padding: 1rem 0rem;
+  padding: 1rem 0rem;
 }
 
 label.active {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 label > span {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
+}
+
+
+.devour-form input {
+  border-bottom: 1px dashed lightgray !important;
+}
+
+.eaten-text {
+  margin: 0 0 8px 0 !important;
+  flex-grow: 1;
+}
+
+.eaten-burger-name {
+  border-bottom: none !important;
+  flex-basis: 65%;
+}
+
+.create-form {
+  display:flex; 
+  align-items: center; 
+  flex-direction:column
+}
+
+.create-form label {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  position: relative;
+  top: 0.8rem;
+}
+
+.create-form input {
+  max-width: 16em;
+}
+
+.create-form button, [data-target="#modal-1"] {
+  max-width: 14em;
+  background-color:purple; 
+  width: auto;
+  font-size: 1.0rem;
+}
+
+.create-update-form {
+  padding: 5px;
+  margin: 5px;
+  background: aqua;
+}
+
+[data-target="#modal-1"] {
+  max-width: 12em;
+}
+
+.burger-col {
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  overflow-y: initial;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem 3.6rem;
+}
+
+#devour-burger-modal .modal-content, .modal-content form {
+  display: flex;
+  padding: 0 0.75rem;
+  flex-direction: column;
+  width: 90%;
+}
+
+.modal-content form .custom-input {
+  margin: 0.2rem 0.75rem;
+}
+
+/* customers page */
+.customer-name-text {
+  flex-basis: 60%;
+  text-align: left;
 }
 
 @media (max-width: 602px) {
@@ -99,3 +203,4 @@ label > span {
     font-size: 1.2rem !important;
   }
 }
+

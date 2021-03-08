@@ -20,7 +20,15 @@ var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main',
+    helpers: {
+      renderUrl: (value: string) => (value === '/burgers' ? true : false),
+    },
+  })
+);
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.(

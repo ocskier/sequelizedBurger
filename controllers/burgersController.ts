@@ -89,7 +89,7 @@ router.put('/api/burgers/update', async (req: Request, res: Response) => {
 
       const dbBurger = await db.Burger.update(
         {
-          devoured: true,
+          isEaten: true,
           CustomerId: dbCustomer.id,
         },
         {
@@ -114,7 +114,7 @@ router.put('/api/burgers/update', async (req: Request, res: Response) => {
     try {
       const dbBurger: BurgerType = await db.Burger.update(
         {
-          devoured: true,
+          isEaten: true,
         },
         {
           where: {
