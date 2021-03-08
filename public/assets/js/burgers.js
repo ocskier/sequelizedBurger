@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 $(function() {
   var currentBurger;
 
